@@ -12,6 +12,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv 43DDF224
 sh -c \
    "echo 'deb http://deb.machinekit.io/debian jessie main' > \
     /etc/apt/sources.list.d/machinekit.list"
+apt-get clean
 apt update
 # basic dependencies (needed by Docker image)
 apt install -y git wget automake unzip gcc g++ binutils bzip2
