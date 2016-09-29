@@ -57,7 +57,7 @@ cd ..
 export PATH=/opt/android-toolchain/bin:$PATH
 
 # Build ZeroMQ for Android
-mkdir tmp
+mkdir -p tmp
 cd tmp/
 
 export OUTPUT_DIR=/opt/zeromq-android
