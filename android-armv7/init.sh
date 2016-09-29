@@ -63,7 +63,7 @@ cd tmp/
 export OUTPUT_DIR=/opt/zeromq-android
 export RANLIB=/opt/android-toolchain/bin/arm-linux-androideabi-ranlib
 
-[ -d "zeromq4-x" ] || git clone --depth 1 https://github.com/zeromq/zeromq4-x.git
+[ -d "zeromq4-x" ] || git clone https://github.com/zeromq/zeromq4-x.git
 cd zeromq4-x/
 git checkout v4.0.8
 
@@ -89,11 +89,14 @@ export NDK=~/bin/android-ndk
 export SYSROOT=$NDK/platform/android-9/arch-arm
 export OUTPUT_DIR=/opt/protobuf-android
 
-[ -d "protobuf" ] || git clone --depth 1 https://github.com/google/protobuf.git
+[ -d "protobuf" ] || git clone https://github.com/google/protobuf.git
 cd protobuf
 git checkout v2.6.1
 
-#./autogen.sh
+# trick that outdated autogen script
+mkdir -p gtest/msvc
+touch gtest/msvc/foo.vcproj
+./autogen.sh
 ./configure --enable-static --disable-shared --host=arm-eabi --with-sysroot=$SYSROOT CC=$CC CXX=$CXX --enable-cross-compile --with-protoc=protoc LIBS="-lc" --prefix=$OUTPUT_DIR
 make
 make install
