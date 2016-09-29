@@ -45,7 +45,7 @@ cd ..
 # download Android SDK
 mkdir -p android-sdk && wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 tar xfz android-sdk.tgz -C android-sdk
-rm android-sdk.zip
+rm android-sdk.tgz
 cd android-sdk
 mv */* .
 cd ..
