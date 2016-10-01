@@ -21,7 +21,7 @@ apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 
 # dependencies of qmlplugindump
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 # Android dependencies
-apt install -y libtool-bin make curl file libgtest-dev python
+apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant
 
 
  [ -d "Qt-Deployment-Scripts" ] || git clone --depth 1 https://github.com/machinekoder/Qt-Deployment-Scripts.git
@@ -43,9 +43,11 @@ mv */* .
 cd ..
 
 # download Android SDK
-mkdir -p android-sdk && wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
-tar xfz android-sdk.tgz -C android-sdk
-rm android-sdk.tgz
+#mkdir -p android-sdk && wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+#tar xfz android-sdk.tgz -C android-sdk
+#rm android-sdk.tgz
+mkdir -p android-sdk && wget -q -O android-sdk.tar.bz2 http://buildbot.roessler.systems/files/qt-bin/android-sdk.tar.bz2
+tar xjf android-sdk.tar.bz2 -C android-sdk
 cd android-sdk
 mv */* .
 cd ..
