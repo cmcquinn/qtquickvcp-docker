@@ -7,6 +7,13 @@ set -x # Be verbose
 # GET DEPENDENCIES
 ##########################################################################
 
+# select fastet mirror
+apt-get update
+apt-get install -y netselect-apt
+netselect-apt
+mv sources.list /etc/apt/sources.list
+apt-get clean
+
 # add Machinekit repository
 apt-key adv --keyserver keyserver.ubuntu.com --recv 43DDF224
 sh -c \
