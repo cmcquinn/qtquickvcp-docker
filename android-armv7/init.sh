@@ -28,7 +28,7 @@ apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 
 # dependencies of qmlplugindump
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 # Android dependencies
-apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant
+apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant lib32z1 lib32ncurses5 lib32stdc++6
 
 
  [ -d "Qt-Deployment-Scripts" ] || git clone --depth 1 https://github.com/machinekoder/Qt-Deployment-Scripts.git
