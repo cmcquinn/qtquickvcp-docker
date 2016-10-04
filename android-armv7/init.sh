@@ -28,9 +28,16 @@ apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 
 # dependencies of qmlplugindump
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 # Android dependencies
-apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant lib32z1 lib32ncurses5 lib32stdc++6
+apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant lib32z1 lib32ncurses5 lib32stdc++6 python-pip
+
+# install android-publish
+pip install -q google-api-python-client
+curl -fsSL -o android-publish https://gist.githubusercontent.com/machinekoder/2137bc2ebabfb3fb8daadc1f431e21a5/raw/de171f7c228dd6b14b981cddb3662a0d86cc53ec/android-publish.py
+chmod +x android-publish
+mv android-publish /usr/bin/
 
 
+# install Qt-Deployment-Scripts
  [ -d "Qt-Deployment-Scripts" ] || git clone --depth 1 https://github.com/machinekoder/Qt-Deployment-Scripts.git
  cd Qt-Deployment-Scripts
  make install
