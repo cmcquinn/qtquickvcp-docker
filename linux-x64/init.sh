@@ -15,7 +15,7 @@ sh -c \
 apt-get clean
 apt update
 # basic dependencies (needed by Docker image)
-apt install -y git wget automake unzip gcc g++ binutils bzip2 sudo
+apt install -y git wget automake unzip gcc g++ binutils bzip2
 # QtQuickVcp's dependencies:
 apt-get install -y pkg-config libprotobuf-dev protobuf-compiler libzmq3-dev
 apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 git
@@ -23,10 +23,10 @@ apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 
 
-# Build AppImageKit now to avoid conflicts with MuseScore's dependencies (LAME)
-[ -d "AppImageKit" ] || git clone --depth 1 https://github.com/probonopd/AppImageKit.git
-cd AppImageKit
-./build.sh
+# Build AppImageKit
+[ -d "AppImageKit" ] || git clone --branch 6 https://github.com/probonopd/AppImageKit.git
+cd AppImageKit/
+bash -ex build.sh
 
  cd ..
 
