@@ -36,7 +36,7 @@ bash -ex build.sh
  cd ..
 
 # install Qt
-mkdir -p qt5 && wget -q -O qt5.tar.bz2 http://ci.roessler.systems/files/qt-bin/Qt-5.7-Linux-x64.tar.bz2
+mkdir -p qt5 && wget -q -O qt5.tar.bz2 http://ci.roessler.systems/files/qt-bin/Qt-5.8-Linux-x64.tar.bz2
 tar xjf qt5.tar.bz2 -C qt5
 rm qt5.tar.bz2
 
