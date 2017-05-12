@@ -16,6 +16,8 @@ apt-get clean
 apt update
 # basic dependencies (needed by Docker image)
 apt install -y sudo git wget automake unzip gcc g++ binutils bzip2
+# remove sudo pw
+echo "ALL            ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/unlock_all
 # QtQuickVcp's dependencies:
 apt-get install -y pkg-config libprotobuf-dev protobuf-compiler libzmq3-dev
 apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 git
