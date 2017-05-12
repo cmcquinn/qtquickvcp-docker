@@ -40,5 +40,8 @@ mkdir -p qt5 && wget -q -O qt5.tar.bz2 http://ci.roessler.systems/files/qt-bin/Q
 tar xjf qt5.tar.bz2 -C qt5
 rm qt5.tar.bz2
 
+# make directories accessible by all users
+chmod -R a+rw /qt5
+
 # mark image as prepared
 touch /etc/system-prepared

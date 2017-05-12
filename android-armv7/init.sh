@@ -123,5 +123,8 @@ cd ..
 # back to root dir
 cd ..
 
+# make directories accessible by all users
+chmod -R a+rw /qt5 /android-ndk /android-sdk
+
 # mark image as prepared
 touch /etc/system-prepared
