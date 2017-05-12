@@ -21,7 +21,7 @@ sh -c \
     /etc/apt/sources.list.d/machinekit.list"
 apt update
 # basic dependencies (needed by Docker image)
-apt install -y git wget automake unzip gcc g++ binutils bzip2
+apt install -y sudo git wget automake unzip gcc g++ binutils bzip2
 # QtQuickVcp's dependencies:
 apt-get install -y pkg-config protobuf-compiler
 apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 git
