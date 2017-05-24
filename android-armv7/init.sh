@@ -12,13 +12,13 @@ apt-get update
 apt-get install -y netselect-apt
 netselect-apt
 mv sources.list /etc/apt/sources.list
-apt-get clean
 
 # add Machinekit repository
 apt-key adv --keyserver keyserver.ubuntu.com --recv 43DDF224
 sh -c \
    "echo 'deb http://deb.machinekit.io/debian jessie main' > \
     /etc/apt/sources.list.d/machinekit.list"
+
 apt update
 # basic dependencies (needed by Docker image)
 apt install -y sudo git wget automake unzip gcc g++ binutils bzip2
@@ -31,6 +31,8 @@ apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 # Android dependencies
 apt install -y libtool-bin make curl file libgtest-dev python default-jdk ant lib32z1 lib32ncurses5 lib32stdc++6 python-pip
+# cleanup afterwards
+apt-get clean
 
 # install android-publish
 pip install -q google-api-python-client
@@ -118,6 +120,14 @@ touch gtest/msvc/foo.vcproj
 ./configure --enable-static --disable-shared --host=arm-eabi --with-sysroot=$SYSROOT CC=$CC CXX=$CXX --enable-cross-compile --with-protoc=protoc LIBS="-lc" --prefix=$OUTPUT_DIR
 make
 make install
+
+cd ..
+
+[ -d "android-openssl-qt" ] || git clone https://github.com/ekke/android-openssl-qt.git
+cd android-openssl-qt
+./build-all-arch.sh
+mkdir -p /opt/openssl-android
+cp -r prebuilt/* /opt/openssl-android/
 
 # back to tmp
 cd ..
