@@ -123,6 +123,9 @@ make install
 
 cd ..
 
+export ANDROID_NDK_ROOT=/android-ndk/
+export OPENSSL_VERSION="openssl-1.0.2k"
+
 [ -d "android-openssl-qt" ] || git clone https://github.com/ekke/android-openssl-qt.git
 cd android-openssl-qt
 ./build-all-arch.sh
