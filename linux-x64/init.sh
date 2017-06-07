@@ -18,9 +18,9 @@ sh -c \
    "echo 'deb http://deb.machinekit.io/debian jessie main' > \
     /etc/apt/sources.list.d/machinekit.list"
 
-apt update
+apt-get update
 # basic dependencies (needed by Docker image)
-apt install -y sudo git wget automake unzip gcc g++ binutils bzip2
+apt-get install -y sudo git wget automake unzip gcc g++ binutils bzip2
 # remove sudo pw
 echo "ALL            ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/unlock_all
 # QtQuickVcp's dependencies:
@@ -46,7 +46,7 @@ bash -ex build.sh
  cd ..
 
 # install Qt
-mkdir -p qt5 && wget -q -O qt5.tar.bz2 http://ci.roessler.systems/files/qt-bin/Qt-5.8-Linux-x64.tar.bz2
+mkdir -p qt5 && wget -q -O qt5.tar.bz2 http://ci.roessler.systems/files/qt-bin/Qt-5.9-Linux-x64.tar.bz2
 tar xjf qt5.tar.bz2 -C qt5
 rm qt5.tar.bz2
 
