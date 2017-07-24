@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t --no-cache=true machinekoder/qtquickvcp:android-armv7 --rm=true .
+docker build -t machinekoder/qtquickvcp:android-armv7 . #--no-cache=true --rm=true .

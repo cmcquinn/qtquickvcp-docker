@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-docker build --no-cache=true -t machinekoder/qtquickvcp:linux-x64 --rm=true .
+docker build -t machinekoder/qtquickvcp:linux-x64 . #--no-cache=true --rm=true .
 
