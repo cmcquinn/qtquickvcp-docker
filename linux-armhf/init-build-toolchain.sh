@@ -28,7 +28,7 @@ make install
 cd ..
 
 # make directories accessible by all users
-chmod -R a+rw /qt5
+# chmod -R a+rw /qt5
 
 # mark image as prepared
 touch /etc/system-prepared
