@@ -6,7 +6,7 @@ env:
   global:
     - REPO=cmcquinn/qtquickvcp-docker-linux-armhf
 before_install:
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
 - cd linux-armhf
 script:
 - "./build.sh"
