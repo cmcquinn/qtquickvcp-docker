@@ -13,6 +13,7 @@ after_success:
 - export REPO=cmcquinn/qtquickvcp-linux-armhf
 - docker build -f linux-armhf/Dockerfile -t $REPO:$COMMIT
 - docker push $REPO
+
 notifications:
   email:
     recipients:
