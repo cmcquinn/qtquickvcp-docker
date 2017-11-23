@@ -1,22 +1,25 @@
 sudo: required
 services:
-- docker
+  - docker
 language: generic
 env:
   global:
     - REPO=cmcquinn/qtquickvcp-docker-linux-armhf
 before_install:
-- docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
-- cd linux-armhf
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+  - docker run --rm --privileged multiarch/qemu-user-static:register
+  - cd linux-armhf
 script:
-- "./build.sh"
+  - ./build.sh
 after_success:
-- docker push $REPO
+  - docker push $REPO
 notifications:
   email:
     recipients:
-    - secure: V+Mvo028GSQLDo5M33TEcqMUG+sC5AWO5YNRhzPpFM2/MU+YPffu6f/nYg54cnJ1NAPo5g15aCgzwSd0ETUcM/ETx8o1Ybs4DbLawlIdEbavY7kvwr/Aa2f87qXR2yIIxdtp/l32XkCHjX+qiNRgCrnm4JdkcV8wQR87tyK2Gzt085H8cCLiiLWmmjO/B1c+rPhwoqXl1NLWPFa+smpVSwDw5hgIEBNhN3d3mzm9ZN+qI54U7DWIeL1mkC9SVHFA2sQQyRa8oRypsN9/3RNyTGChbVVkhLQnszCFmidZfZgNJxkJXn+e+vfdDKVJ5JCfjVANp4/FmtKWQ7150bcqjo8Dv5bN4iTbJzfVmzvBKtd2b/cVdNDR+0QlpbcR6+kvhW91tyBVAR4gI0aUEPnJfxr56+4W9uTHrUn3dHlCgmCxOri9kZhqZsrRHHJsOq3g2PtwZxj3my+g4/giBJv0xIcgD9ij45VQyC4SD8b4AjWb+WGBV4wPwS827SdYQxTjZB8d4O908TW5+QTcowGPGuJbgnt4intGxGwKeVC37sHLzl3fg33KZVAprJgocZMPgqkLnwDKdP00INCUokrw2s9M5Vc93AJ7afNNPjwzbS+YFgNuGrRUMh2HF8I46vfsEa7vbOB31yPDN5hzpxlX2el4A36yHw4MtjMtk8DkoP0=
+      - secure: >-
+          V+Mvo028GSQLDo5M33TEcqMUG+sC5AWO5YNRhzPpFM2/MU+YPffu6f/nYg54cnJ1NAPo5g15aCgzwSd0ETUcM/ETx8o1Ybs4DbLawlIdEbavY7kvwr/Aa2f87qXR2yIIxdtp/l32XkCHjX+qiNRgCrnm4JdkcV8wQR87tyK2Gzt085H8cCLiiLWmmjO/B1c+rPhwoqXl1NLWPFa+smpVSwDw5hgIEBNhN3d3mzm9ZN+qI54U7DWIeL1mkC9SVHFA2sQQyRa8oRypsN9/3RNyTGChbVVkhLQnszCFmidZfZgNJxkJXn+e+vfdDKVJ5JCfjVANp4/FmtKWQ7150bcqjo8Dv5bN4iTbJzfVmzvBKtd2b/cVdNDR+0QlpbcR6+kvhW91tyBVAR4gI0aUEPnJfxr56+4W9uTHrUn3dHlCgmCxOri9kZhqZsrRHHJsOq3g2PtwZxj3my+g4/giBJv0xIcgD9ij45VQyC4SD8b4AjWb+WGBV4wPwS827SdYQxTjZB8d4O908TW5+QTcowGPGuJbgnt4intGxGwKeVC37sHLzl3fg33KZVAprJgocZMPgqkLnwDKdP00INCUokrw2s9M5Vc93AJ7afNNPjwzbS+YFgNuGrRUMh2HF8I46vfsEa7vbOB31yPDN5hzpxlX2el4A36yHw4MtjMtk8DkoP0=
     on_success: always
     on_failure: always
   slack:
-    secure: owPdeRkXvFLyxxn3+050xV77eH71kLWHsnO9jNpg1ZDVrSTk5QGCzaZoetVFc8fIA2PnEy2AO2ZFJTgYfoo3VMa80djQe0P19+nn9gMNshEfQYI9WjSPp7sWCpt2DFhtk5KH9nvNpAbcwZqV2Z55cIAnJ3J0YGmHEDGUogeGWQI86Q50xO6WjnabjcrvZ7xsclt0F943qgXYwvw5QI4gvGR4MCOehG1CBHFtBdaCTUSJ+O1lxaaZ0n8x3eRNANv3rDy+nuIaC0zHwDAbZiUVjsQi5ZfY54GmZvNJJV2CvUN+ejrooOZj2CXI5qZ1TPx4CK0nO2Kp30hg7GzXW+FIHdUuLWbIwwEBH3S4xVqpL8FOlUhi5UNRD+hRk2vfPoalMfL7YPIcG6v6fdeOa4WC1O9fccCch9gfNoE0AnwQXm4ysiHrghOaeTiSfDt86BQSgAZczO8TRda/YhwAwGxFWdA9PM7tYclROBix6YPU2dp3Bx8KOT4QK+F/hduAqBuE8b9mZTOMZlIZVcBglbjHls/UzGenEglEi0VT/5CaA8cixUirAOACB9hR8qNCh4mv/c9HMhAzv8gf+oXTg8981OhzqjfdE+iH7SHy/VHlwEhNH+pPXmGp6YVgkrFu0OR2aV8wjMvHaOyZWXsIRAKCKo760kY8eu+P0RFyJ4ZAoiM=
+    secure: >-
+      owPdeRkXvFLyxxn3+050xV77eH71kLWHsnO9jNpg1ZDVrSTk5QGCzaZoetVFc8fIA2PnEy2AO2ZFJTgYfoo3VMa80djQe0P19+nn9gMNshEfQYI9WjSPp7sWCpt2DFhtk5KH9nvNpAbcwZqV2Z55cIAnJ3J0YGmHEDGUogeGWQI86Q50xO6WjnabjcrvZ7xsclt0F943qgXYwvw5QI4gvGR4MCOehG1CBHFtBdaCTUSJ+O1lxaaZ0n8x3eRNANv3rDy+nuIaC0zHwDAbZiUVjsQi5ZfY54GmZvNJJV2CvUN+ejrooOZj2CXI5qZ1TPx4CK0nO2Kp30hg7GzXW+FIHdUuLWbIwwEBH3S4xVqpL8FOlUhi5UNRD+hRk2vfPoalMfL7YPIcG6v6fdeOa4WC1O9fccCch9gfNoE0AnwQXm4ysiHrghOaeTiSfDt86BQSgAZczO8TRda/YhwAwGxFWdA9PM7tYclROBix6YPU2dp3Bx8KOT4QK+F/hduAqBuE8b9mZTOMZlIZVcBglbjHls/UzGenEglEi0VT/5CaA8cixUirAOACB9hR8qNCh4mv/c9HMhAzv8gf+oXTg8981OhzqjfdE+iH7SHy/VHlwEhNH+pPXmGp6YVgkrFu0OR2aV8wjMvHaOyZWXsIRAKCKo760kY8eu+P0RFyJ4ZAoiM=
