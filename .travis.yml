@@ -7,12 +7,20 @@ env:
   - secure: BBjegTxcZpCmXDr6ogcEFIF3FS3yJLBTQxByWBU+14z2mGFtaCVxN3C7gcHWCLJ2z9Ww0sCQntC40sa+fL+OrZI0anX9t5CjsqNOeo5qQnuf/O7y51Vng09dviaGU531juodqSBH+6Oof3PzkbMehwW3ccZBibeTSYVahXFAtCyTdW2RySQanVEkDn040x3jhvzDPkiZNYAxqLbklagLxzjKUZZQWeVH3r8csqc+a0VHEDK9WOI4r4Qukva0+BHkS0ozvFg/LIUu3TjwVWQ3e+8y5Y71ZGC4m1WmaA8hq284rtQk+Fn8xMWvpClg5V/rp0K/ys2E5e6+ruJ4L79WRY76hKSCVMnaJC6WUdNU9jsaQIWK4zFtwoFANVAdq9kwshyke3QpkRKXKDSaY/eyLm/XXE/gvBSFIR77jn/R9s+ekXh7a9nkZNZ9wK9f1YUvPw86lnAgViPtIGsOgQ8tNAHVDeg/icD9uF8tvkmqW4gnXxt4y4c2J7BRq6vXQm3KQNBeW9wPUHm8RfARSHwmo2TUOngZ+N9wx/XJdyy3Z8lwn9FXoTE3R8AKGRsMDZxodgKZ8UAreR4Ge+i69UNH7wN/uMIXYET8lSMqb3vLxhEtlJdwn1UTvnZGlAsZjZd5Abu0zp1pqnu5i2bUNeUjPHD2J1uMKO4W/nIIGlgOHmQ=
   - secure: V1aMDY72ennoOs6koKbxoxB9k5XYTLvcIrj7XuIhJ4T/xH5dXx/jVZBZrjUn1ujdbBz5+OFTXTv20GfzF0IiLcxQ0rSn7CkKeK8i/ay5pPk5RFzPGd+yZPJsCZv9VZpUMY2jCrHcTrPOqj8gaAzLOP2dhgsMDhtvbtqYZqTX+Xc3PpEsHl/AMPnJtOUaJmKOaN/Eys0QV9FmfcGqGwvkPE1Qu0ahBYd6/xd8manzRq7O4f5/0lf8pD3+B/ZiwR7uqNuXb3onwricKJJ++PXPcgpvr4577pzmIxc0NI16xGk8jV5ci+0gHf9jCCCADuamrlbKqckI0yxNlmEUwwVhzNP57okpRsXlNFrx9k8fWjdpRtIzO7D1jpXV3xH+jAv/bdxFYr+Ie5cbtRMllEYkQRtAc+Y7BOAyfNBI5DsCYuEGGZWm8nuNWyfiuugfGzfQgyftGF+PQag2bBM/s126o9adCz0+Va4oWajaLoVQdoiffiAC6/t+H1uBaTPn1MU3/J2tgfIU89HiPsvAfD2mh9QgoNfzdsd3lN4+WvINkJgCqponGC1woyXC44ZKJUc8+n0Udkbco6GOndE2CerkkuhvUDWt8JlLHEO7MGwnZmVwolKV9rUf9J0kdGHW/7SONM4IpA74kn2SWqOep4Ymwp5ub7kDQGfsPPxQG5Za3us=
   - secure: LeGOwtAxQj3A6juOdEIvy+1u4Bq4Z9tdGuRH5a6O96lb/E0NV6KDRBe4uotgL0n64itiPMlWW6Ctc/S1y9FzqiBeu5pnjEhlglAe14lTfQ9vhOLuV/oZMN6i58LjE7ul0VP7UylNiVGoyv97RMToZ1CdJGdYZpAr5RyvKL2/Ens2OaTV0AeIj07OvYZF+SOIEftLHgYsJpNh7Mj3uHit6vYgOL/wsKtBgmfqWMNO/33QEgfF8fjtPnCVEXk2EVViIsm78JJ1Iny17YOndr50uC5OFE9JqHB+UGcs/bKsmNpGrRloZfHQEH1WeVtLfXQWh1QthTTosawpUS7pm7l5WuqTKIUDFx/qUjQDlul6NMm66ddW5pConqVM+XFozsgH3htSY8ythl8qa4rT3GfpObIp7UmoFbe9WKSZiifG9a6B7DxBtIfMRKIWtTrubWuylRprPjn5HbUch5JRIzg+DRdv52esWwBfV0Xof4Txp3Xn4d0nV15AmuM6sJj71G45MYpxUkzesDaAwqRmgmatqIbanwrobZJIxYFdQqsL/e6hEzpSfddQ4RfB7dhjwnYKKmhh9RFCzXLDFj8SrjjvyaUAOR2E38C0sbXZXMTK+ZtrAQhQ+cDblw+Q+gRd1kuPcALMbmJEiGjZ48+7ICNuqQsiMuno9hiychzDmx5zzec=
+
+before_install:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - cd linux-armhf
+
+# - export COMMIT=latest
+# - export REPO=cmcquinn/qtquickvcp-linux-armhf
+# - docker build -f linux-armhf/Dockerfile -t $REPO:$COMMIT
+
+script:
+  - ./build.sh
+
 after_success:
-- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-- export COMMIT=latest
-- export REPO=cmcquinn/qtquickvcp-linux-armhf
-- docker build -f linux-armhf/Dockerfile -t $REPO:$COMMIT
-- docker push $REPO
+  - docker push $REPO
 
 notifications:
   email:
