@@ -12,16 +12,17 @@ apt-get install -y libcurl3-gnutls
 # apt-get install -y python fuse libglade2-0 libvte9 ruby-vte unionfs-fuse
 
 # Build AppImageKit
-#[ -d "AppImageKit" ] || git clone --branch 6 https://github.com/probonopd/AppImageKit.git
+[ -d "AppImageKit" ] || git clone --branch 6 https://github.com/probonopd/AppImageKit.git
 #cp /usr/lib/arm-linux-gnueabihf/libglade-2.0.so.0 /AppImageKit/binary-dependencies/armv7l/
 #cp /usr/lib/libvte.so.9 AppImageKit/binary-dependencies/armv7l/
 #cp /usr/lib/arm-linux-gnueabihf/ruby/vendor_ruby/2.1.0/vte.so AppImageKit/binary-dependencies/armv7l/
 #cp /usr/bin/unionfs-fuse AppImageKit/binary-dependencies/armv7l/
-#cd AppImageKit/
-#bash -ex build.sh
-#
-# cd ..
-#
+cd AppImageKit/
+bash -ex install-build-deps.sh
+bash -ex build.sh
+
+cd ..
+
 [ -d "Qt-Deployment-Scripts" ] || git clone --depth 1 https://github.com/machinekoder/Qt-Deployment-Scripts.git
 cd Qt-Deployment-Scripts
 make install
