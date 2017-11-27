@@ -27,7 +27,7 @@ echo "ALL            ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/unlock_all
 apt-get install -y pkg-config libprotobuf-dev protobuf-compiler libzmq3-dev
 apt-get install -y build-essential gdb dh-autoreconf libgl1-mesa-dev libxslt1.1 git
 # QT5
-apt-get install -y qt5-default
+apt-get install -y qt5-default qtdeclarative5-dev qtbase5-dev
 # dependencies of qmlplugindump
 apt-get install -y libfontconfig1 libxrender1 libdbus-1-3 libegl1-mesa
 # test dependencies
