@@ -28,6 +28,9 @@ cd Qt-Deployment-Scripts
 make install
 cd ..
 
+# python is needed to run the deployment scripts
+apt-get install -y python
+
 # make directories accessible by all users
 # chmod -R a+rw /qt5
 
